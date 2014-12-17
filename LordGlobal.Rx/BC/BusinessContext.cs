@@ -19,5 +19,25 @@ namespace LordGlobal.Rx.BC
             return _objDac.GetLoginDetails(loginDetails);
         }
         #endregion
+
+        public LoginProfile LoadUserProfile(string userRole,long userId)
+        {
+            if (userRole.Equals(UserRole.Doctor.ToString()))
+            {
+                return _objDac.LoadDoctorProfile(userId);
+            }
+            else if (userRole.Equals(UserRole.Admin.ToString()))
+            {
+                return null;
+            }
+            else if (userRole.Equals(UserRole.Receptionist.ToString()))
+            {
+                return null;
+            }
+
+            return null;
+
+        }
+
     }
 }

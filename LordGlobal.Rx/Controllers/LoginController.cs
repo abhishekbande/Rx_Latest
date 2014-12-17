@@ -26,6 +26,8 @@ namespace LordGlobal.Rx.Controllers
         public ActionResult LoginPage(Login loginData)
         {
             bool isLoginSuccess = false;
+            LoginProfile profileData=null;
+
             //if Valid login data then proceed to check for authentication.
             if (ModelState.IsValid)
             {
@@ -33,6 +35,8 @@ namespace LordGlobal.Rx.Controllers
                 //if Authentication is successful
                 if (isLoginSuccess)
                 {
+
+                    profileData=_objBusiness.LoadUserProfile(loginData.UserRole, loginData.UserId);
                     
                     return RedirectToAction("DoctorDashboard","Dashboard");
                 }

@@ -77,8 +77,7 @@ namespace LordGlobal.Rx
 
          public LoginProfile LoadDoctorProfile(long userId)
         {
-            LoginProfile profileData = new LoginProfile();
-            bool isSuccess = false;
+            LoginProfile profileData=null;
             string query = Query.GET_DOCTOR_PROFILE_DETAILS.ToString();
             try
             {
@@ -89,6 +88,7 @@ namespace LordGlobal.Rx
                     var data=cmd.ExecuteReader();
                     if (data.Read())
                     {
+                           profileData= new LoginProfile();
                            profileData.UserId = userId;
                            profileData.FullName = data["doctor_name"].ToString();
                            Common.MapFirstMiddleLastName(profileData);
@@ -102,25 +102,22 @@ namespace LordGlobal.Rx
                            profileData.PhoneNumber = Convert.ToInt64(data["phone_number"]);
                            profileData.landline = Convert.ToInt64(data["landline"]);
                            profileData.City = data["city"].ToString();
+                           profileData.Gender = Convert.ToString(data["gender"]);
                            profileData.Pincode = Convert.ToInt32(data["pincode"]);
-                           profileData.image = data["photo"] as byte[] ?? null;
-                           isSuccess = true;
-                        profileData.Age=Convert.ToInt32(data["
+                           profileData.image = data["photo"] as byte[] ?? null;                       
                     }
-
-                    
                 }
                 
             }
             catch (Exception ex)
             {
-
+                throw new Exception("RX00001: Process failed while retrieving data from database.:", ex);
             }
             finally
             {
                 con.Close();
             }
-            return isSuccess;
+            return profileData;
         }
 
 
