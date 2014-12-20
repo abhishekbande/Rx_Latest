@@ -39,5 +39,19 @@ namespace LordGlobal.Rx.BC
 
         }
 
+        public List<MailData> LoadMailData(long userId)
+        {
+            return _objDac.LoadMailData(userId);
+        }
+
+        public List<TaskData> LoadTaskData(long userId)
+        {
+            return _objDac.LoadTaskData(userId);
+        }
+
+        public List<NotificationData> LoadNotificationData(long userId)
+        {
+            return _objDac.LoadNotificationData(userId);
+        }
     }
 }

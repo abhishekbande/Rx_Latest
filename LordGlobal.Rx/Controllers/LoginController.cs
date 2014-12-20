@@ -26,6 +26,7 @@ namespace LordGlobal.Rx.Controllers
         public ActionResult LoginPage(Login loginData)
         {
             bool isLoginSuccess = false;
+            DashboardModel model = new DashboardModel();
             LoginProfile profileData=null;
 
             //if Valid login data then proceed to check for authentication.
@@ -35,10 +36,40 @@ namespace LordGlobal.Rx.Controllers
                 //if Authentication is successful
                 if (isLoginSuccess)
                 {
+                    // If user is Active
+                    if(loginData.Status.Equals(LoginStatus.Active.ToString()))
+                    {
+                        model.loginProfile=_objBusiness.LoadUserProfile(loginData.UserRole, loginData.UserId);
+                        TempData["DoctorData"] = model;
+                        Session["userId"] = loginData.UserId;
+                        if (model.loginProfile != null)
+                        {
+                            
+                            //if user role is doctor thenshow doctor's dashboard
+                            if (loginData.UserRole.Equals(UserRole.Doctor.ToString()))
+                            {
+                                return RedirectToAction("DoctorDashboard", "Dashboard");
+                             
+                            }
+                            //if user role is Admin then show Admin's dashboard
+                            else if (loginData.UserRole.Equals(UserRole.Admin.ToString()))
+                            {
 
-                    profileData=_objBusiness.LoadUserProfile(loginData.UserRole, loginData.UserId);
+                            }
+                            //if user role is receptionist then show receptionist's dashboard
+                            else if (loginData.UserRole.Equals(UserRole.Receptionist.ToString()))
+                            {
+
+                            }
+                        }
+                            //If new user then redirect to registration page
+                        else
+                        {
+
+                        }
+                    }
                     
-                    return RedirectToAction("DoctorDashboard","Dashboard");
+                    
                 }
                 // if Authentication failed
                 else
