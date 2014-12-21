@@ -1363,8 +1363,8 @@ body > .header .logo .icon {
 .small-box .icon {
   position: absolute;
   top: auto;
-  bottom: 25px;
-  right: 5px;
+  bottom: 10px;
+  right: 15px;
   z-index: 0;
   font-size: 90px;  
   color: rgba(0, 0, 0, 0.15);
