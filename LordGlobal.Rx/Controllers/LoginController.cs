@@ -27,7 +27,7 @@ namespace LordGlobal.Rx.Controllers
         {
             bool isLoginSuccess = false;
             DashboardModel model = new DashboardModel();
-            LoginProfile profileData=null;
+            //LoginProfile profileData=null;
 
             //if Valid login data then proceed to check for authentication.
             if (ModelState.IsValid)

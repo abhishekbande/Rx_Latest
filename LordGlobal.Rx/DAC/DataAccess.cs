@@ -135,11 +135,12 @@ namespace LordGlobal.Rx
                     while (data.Read())
                     {
                         mail = new MailData();
-                         mail.From = Convert.ToInt64(data["mail_from"]);
+                        mail.From = Convert.ToInt64(data["mail_from"]);
                         mail.To = userId;
                         mail.Message = data["message"].ToString();
                         mail.status = data["status"].ToString();
                         mail.FromName = data["from_name"].ToString();
+                        mail.SentDtm = Convert.ToDateTime(data["mail_dt"]);
                         mailData.Add(mail);                            
                     }
                     data.Close();
