@@ -21,9 +21,10 @@
                               
                                 <div class="inner">
                                     <h3>
-                                        11            
+                                        @*11            *@
                                         @*@Model.loginProfile.FullName*@
                                         @*@Html.LabelFor(m=>,Model.loginProfile.FullName)*@
+                                        @Model.TotalPatientCountForDoctor
                                     </h3>
                                     <p>
                                         Total Patients
@@ -63,7 +64,7 @@
                             
                                 <div class="inner">
                                     <h3>
-                                        20
+                                        @Model.TotalPatientCount
                                     </h3>
                                     <p>
                                         Patients Admitted

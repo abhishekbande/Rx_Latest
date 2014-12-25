@@ -166,11 +166,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BC\BusinessContext.cs" />
+    <Compile Include="Common\cache.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="DAC\BaseDac.cs" />
     <Compile Include="DAC\DataAccess.cs" />
     <Compile Include="DAC\Query\Query.Designer.cs">
@@ -185,6 +187,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DoctorModel.cs" />
+    <Compile Include="Models\PatientDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1110,6 +1113,7 @@
     <None Include="prototype\wireframes.lordmarc.com\test\php\test.php" />
     <None Include="prototype\wireframes.lordmarc.com\test\python\test.py" />
     <Content Include="Views\Dashboard\DoctorDashboard.cshtml" />
+    <Content Include="Views\Patient\PatientDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAC\Query\Query.resx">

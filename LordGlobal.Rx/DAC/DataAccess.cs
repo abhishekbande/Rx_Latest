@@ -241,6 +241,37 @@ namespace LordGlobal.Rx
         }
 
 
+        public int[] GetPatientCountForDoctor(long doctorID)
+        {
+            int []count = {0,0}; 
+            try
+            {
+                con.Open();
+                string sqlQuery = Query.GET_PATIENT_COUNT_BY_DOCTOR_ID.ToString();
+                using (cmd = baseDac.getCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("doctorId", MySqlDbType.Int64).Value = doctorID;
+                    var data = cmd.ExecuteReader();
+                    if (data.Read())
+                    {
+                        count[0] = Convert.ToInt32(data["total_count"]);
+                        count[1] = Convert.ToInt32(data["count_by_doctor"]);
+                    }
+
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("RX00001: Process failed while retrieving data from database.:", ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
+        }
+
          #endregion
     }
 }

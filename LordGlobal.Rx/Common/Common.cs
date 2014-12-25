@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using LordGlobal.Rx.Models;
+using System.Web.Caching;
+
 
 namespace LordGlobal.Rx
 {
@@ -10,8 +12,12 @@ namespace LordGlobal.Rx
     public enum UserRole { Admin, Doctor, Receptionist };
     public enum Mail { Pending, Delivered, Read, Delete };
     public enum Gender { Male, Female };
+    
+     
     public static class Common
     {
+        
+        
         public static void MapFirstMiddleLastName(LoginProfile loginProfile)
         {
             string[] words = loginProfile.FullName.Split(' ');

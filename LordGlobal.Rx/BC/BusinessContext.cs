@@ -53,5 +53,10 @@ namespace LordGlobal.Rx.BC
         {
             return _objDac.LoadNotificationData(userId);
         }
+
+        public int[] GetPatientCountForDoctor(long doctorId)
+        {
+            return _objDac.GetPatientCountForDoctor(doctorId);
+        }
     }
 }
